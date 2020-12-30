@@ -944,11 +944,11 @@ namespace ImGuizmo
       gContext.mCameraUp = viewInverse.v.up;
 
       // projection reverse
-      vec_t far;
+      vec_t _far;
       matrix_t projectionInverse;
       projectionInverse.Inverse(gContext.mViewProjection);
-      far.Transform(makeVect(0, 0, 10.f, 1.f), projectionInverse);
-      gContext.mReversed = (far.z/far.w) < 0.f;
+      _far.Transform(makeVect(0, 0, 10.f, 1.f), projectionInverse);
+      gContext.mReversed = (_far.z/_far.w) < 0.f;
       
       // compute scale from the size of camera right vector projected on screen at the matrix position
       vec_t pointRight = viewInverse.v.right;
